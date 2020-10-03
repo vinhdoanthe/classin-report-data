@@ -8,6 +8,8 @@ class RawDataService
           "error": "程序正常执行"
         }
       }
+      # Use sidekiq gem to process async
+      ProcessedDataService.new.process_data(json_data)
     end
 
     result

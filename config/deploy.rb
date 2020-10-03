@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "classin_statistic_data"
+set :application, "classin.codable.vn"
 set :repo_url, "git@gitlab.com:teky.vn/classin-statistic-data.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/home/deploy/classin.codable.vn"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
