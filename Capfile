@@ -9,7 +9,7 @@ require 'capistrano/passenger'
 require 'capistrano/rbenv'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.6'
+set :rbenv_ruby, '2.6.5'
 
 # Load the SCM plugin appropriate to your project:
 #

@@ -31,7 +31,9 @@ server 'classin.codable.vn', user: 'deploy', roles: %w{app db web}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-
+set :stage, :production
+set :branch, 'master'
+set :rails_env, 'production'
 
 # Custom SSH Options
 # ==================
