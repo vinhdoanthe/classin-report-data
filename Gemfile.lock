@@ -213,7 +213,6 @@ DEPENDENCIES
   capistrano-rails
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
-  public_suffix
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.2)
