@@ -15,8 +15,8 @@ class RawDataService
     result
   end
 
-  def get_raw_data
-    RawData.all.select(:id, :data)
+  def get_raw_data params
+    RawData.page(params[:page]).per(5).select(:id, :data)
   end
 
 end

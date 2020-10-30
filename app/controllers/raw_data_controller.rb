@@ -12,7 +12,7 @@ class RawDataController < ApiController
   end
 
   def get_data
-    result = RawDataService.new.get_raw_data
+    result = RawDataService.new.get_raw_data params
     render json: result 
   end
 
