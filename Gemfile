@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 gem 'kaminari'
+gem 'config'
 # Swagger docs for API documentation
 # gem 'swagger-blocks'
 # gem 'rswag-api'

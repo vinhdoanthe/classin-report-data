@@ -9,7 +9,7 @@ class Common::AuthorizeApiService < ApplicationService
   end
 
   def call
-    if system_code == Rails.application.credentials[:system_code] && system_secret == Rails.application.credentials[:system_secret]
+    if system_code == Settings.system_code && system_secret == Settings.system_secret
       return true
     else
       return false
