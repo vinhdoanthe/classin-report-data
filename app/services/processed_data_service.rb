@@ -1,7 +1,6 @@
 class ProcessedDataService
 
   def process_data raw_data_record
-    binding.pry
     raw_data_record_json = JSON.parse(raw_data_record)
     # parse data
     p_data = {
