@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_085956) do
+ActiveRecord::Schema.define(version: 2020_11_04_085053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2020_10_02_085956) do
     t.json "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sid"
+    t.string "cmd"
+    t.datetime "close_time"
+    t.datetime "start_time"
+    t.string "msg_id"
+    t.datetime "action_time"
+    t.bigint "source_id"
     t.index ["class_id"], name: "index_processed_data_on_class_id"
     t.index ["course_id"], name: "index_processed_data_on_course_id"
   end

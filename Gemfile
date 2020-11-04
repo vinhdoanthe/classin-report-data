@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 gem 'kaminari'
 gem 'config'
+gem 'sentry-raven'
 # Swagger docs for API documentation
 # gem 'swagger-blocks'
 # gem 'rswag-api'
@@ -51,6 +52,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry', '~> 0.13.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
