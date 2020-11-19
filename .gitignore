@@ -28,6 +28,8 @@
 /config/database.yml
 /config/storage.yml
 /config/secrets.yml
+config/settings.local.yml
+config/settings.yml
 
 /config/credentials/development.key
 
