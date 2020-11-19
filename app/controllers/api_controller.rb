@@ -3,6 +3,13 @@ class ApiController < ActionController::API
   before_action :set_raven_context
   before_action :authorize_api
 
+  def lesson_report
+    report = ToppyLessonReport.where(class_id: params[:classID], uid: params[:studentID]).first
+
+    result = report.present? ? report.data : {}
+    render json: result
+  end
+
   private
 
   def authorize_api
@@ -18,4 +25,5 @@ class ApiController < ActionController::API
   def set_raven_context
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
+
 end
