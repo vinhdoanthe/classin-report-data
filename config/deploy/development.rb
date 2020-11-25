@@ -22,7 +22,7 @@ server 'developclassin.teky.online', user: 'deploy', roles: %w{app db web}
 # role :db,  %w{deploy@example.com}
 
 set :stage, :development
-set :branch, 'development'
+set :branch, 'develop'
 set :rails_env, 'development'
 
 # Configuration
