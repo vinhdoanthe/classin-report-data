@@ -20,7 +20,9 @@ namespace :report do
         report.save
       end
       
-      personal_data = ToppyLessonReport.where(process_data_id: process_data.id, type: 'personal').first
+      personal_data = ToppyLessonReport.where(process_data_id: process_data.id, report_type: 'personal').first
+      next if personal_data.blank?
+
       data_att = ['sessionStartDatetime', 'sessionEndDatetime', 'classDuration', 'image']
 
       class_data = {}
@@ -28,6 +30,7 @@ namespace :report do
 
       class_report = ToppyLessonReport.new
       class_report.class_id = personal_data.class_id
+      class_report.uid = -1
       class_report.report_type = 'class'
       class_report.process_data_id = personal_data.process_data_id
       class_report.data = class_data
