@@ -35,12 +35,12 @@ class ProcessedDataService
     class_data = {}
 
     #Stage time
-    data['stageEnd'].each do |k, v|
+    data['stageEnd']&.each do |k, v|
       class_data[k] = { 'onStageTime' => v['UpTotal'], 'sessionStartDatetime' => class_start, 'sessionEndDatetime' => class_end, 'classDuration' => ( class_end - class_start), 'attend' => true}
     end
 
     #authorize time
-    data['authorizeEnd'].each do |k, v|
+    data['authorizeEnd']&.each do |k, v|
       if class_data[k].present?
         class_data[k].merge! ({ 'authorizeTime' => v['Total'] })
       else
@@ -49,9 +49,9 @@ class ProcessedDataService
     end
 
     #inout event
-    data['inoutEnd'].each do |k, v|
+    data['inoutEnd']&.each do |k, v|
       events = []
-      v["Details"].each do |e|
+      v["Details"]&.each do |e|
         if e['Type'] == 'In'
           attendState = 'late'
           if class_start > e['Time']
@@ -70,7 +70,7 @@ class ProcessedDataService
     end
 
     #speaking time
-    data["muteEnd"]["Persons"].each do |k, v|
+    data["muteEnd"]["Persons"]&.each do |k, v|
       if class_data[k].present?
         class_data[k].merge! ({ 'speakingTime' => v['Total'] })
       end
