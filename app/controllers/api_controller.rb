@@ -6,10 +6,6 @@ class ApiController < ActionController::API
   def lesson_report
     report = ToppyLessonReport.where(class_id: params[:classID], uid: params[:studentID]).first
 
-    if report.blank?
-      report = ToppyLessonReport.where(class_id: params[:classID]).first
-    end
-
     result = report.present? ? report.data : {}
     render json: result
   end
