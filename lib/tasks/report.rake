@@ -14,7 +14,7 @@ namespace :report do
         report = ToppyLessonReport.new
         report.class_id = class_id
         report.uid = uid
-        report.type = 'personal'
+        report.report_type = 'personal'
         report.data = u_data
         report.process_data_id = process_data.id
         report.save
