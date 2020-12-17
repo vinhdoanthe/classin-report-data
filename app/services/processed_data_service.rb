@@ -17,7 +17,8 @@ class ProcessedDataService
     }
 
     # save data to Database
-    data = ProcessedData.create!(p_data) 
+    data = ProcessedData.create(p_data)
+
     if data.errors.any?
       return false
     else
