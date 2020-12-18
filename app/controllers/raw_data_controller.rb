@@ -3,7 +3,6 @@ class RawDataController < ApiController
   skip_before_action :authorize_api, only: [:receive_data]
 
   def receive_data
-
     json_data = classin_params
 
     result = RawDataService.new.save_raw_data(json_data)

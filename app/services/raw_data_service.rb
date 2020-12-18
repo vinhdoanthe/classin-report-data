@@ -1,15 +1,37 @@
 class RawDataService
 
   def save_raw_data json_data
-    if RawData.create(data: json_data)
-      result = {
-        "error_info": {
-          "errno": 1,
-          "error": "程序正常执行"
+    data = JSON.parse(json_data)
+    result = ''
+
+    if data['Cmd'] == 'InMesImg'
+      process = ProcessData::ProcessInmesimgDataService.call(data)
+
+      if process
+        data['Content'] = ''
+        data['raw_datum']['Content'] = ''
+
+      end
+
+      if RawData.create(data: data.to_json)
+        result = {
+          "error_info": {
+            "errno": 1,
+            "error": "程序正常执行"
+          }
         }
-      }
-      # Use sidekiq gem to process async
-      ProcessedDataService.new.process_data(json_data)
+      end
+    else
+      process = ProcessedDataService.new.process_data(json_data)
+
+      if RawData.create(data: json_data)
+        result = {
+          "error_info": {
+            "errno": 1,
+            "error": "程序正常执行"
+          }
+        }
+      end
     end
 
     result
