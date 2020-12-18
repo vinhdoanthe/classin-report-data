@@ -27,6 +27,9 @@ gem 'rack-cors'
 gem 'kaminari'
 gem 'config'
 gem 'sentry-raven'
+
+# Use Digital Ocean space for storing objects
+gem "aws-sdk-s3", require: false
 # Swagger docs for API documentation
 # gem 'swagger-blocks'
 # gem 'rswag-api'
