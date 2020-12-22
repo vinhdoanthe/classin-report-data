@@ -31,22 +31,22 @@ class ProcessData::ProcessInmesimgDataService < ApplicationService
 
      data = ProcessedData.create(p_data)
 
-     if data.errors.any?
-       return false
-     else
-       type = img_type[@raw_data['EmoteType'].to_s]
-       convert_base64_to_image img_str, type, data.id
+     # if data.errors.any?
+     #   return false
+     # else
+     #   type = img_type[@raw_data['EmoteType'].to_s]
+     #   convert_base64_to_image img_str, type, data.id
 
-       if data.image.attach(io: File.open(Rails.root.join("app", "raw#{ data.id.to_s }.#{ type }")), filename: "raw#{ data.id.to_s }.#{ type }")
-         File.open("app/raw#{ data.id.to_s }.#{ type }", 'r') do |f|
-           File.delete(f)
-         end
+     #   if data.image.attach(io: File.open(Rails.root.join("app", "raw#{ data.id.to_s }.#{ type }")), filename: "raw#{ data.id.to_s }.#{ type }")
+     #     File.open("app/raw#{ data.id.to_s }.#{ type }", 'r') do |f|
+     #       File.delete(f)
+     #     end
 
-         return data.id
-       else
-         return false
-       end
-     end
+     #     return data.id
+     #   else
+     #     return false
+     #   end
+     # end
   end
 
   def convert_base64_to_image img_str, type, id
