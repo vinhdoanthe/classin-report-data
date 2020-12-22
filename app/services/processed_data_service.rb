@@ -36,8 +36,8 @@ class ProcessedDataService
     class_data = {}
 
     #Stage time
-    data['stageEnd']&.each do |k, v|
-      class_data[k] = { 'onStageTime' => v['UpTotal'], 'sessionStartDatetime' => class_start, 'sessionEndDatetime' => class_end, 'classDuration' => ( class_end - class_start), 'attend' => true}
+    data['stageEnd'].each do |k, v|
+      class_data[k] = { 'onStageTime' => v['UpTotal'], 'sessionStartDatetime' => class_start, 'sessionEndDatetime' => class_end, 'classDuration' => (class_end - class_start - 1200), 'attend' => true}
     end
 
     #authorize time
