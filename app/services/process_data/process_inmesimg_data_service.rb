@@ -31,6 +31,11 @@ class ProcessData::ProcessInmesimgDataService < ApplicationService
 
     data = ProcessedData.create(p_data)
 
+    if data.errors.any?
+      return false
+    else
+      return true
+    end
     # if data.errors.any?
     #   return false
     # else
