@@ -34,31 +34,22 @@ class ProcessData::ProcessInmesimgDataService < ApplicationService
     if data.errors.any?
       return false
     else
-      return true
+      type = img_type[@raw_data['EmoteType'].to_s]
+      base64_str = convert_base64_to_image img_str, type, data.id
+      base64_str.insert(0, "data:image/#{ type };base64,")
+
+      if data.image.attach(data: base64_str)
+        return data.id
+      else
+        return false
+      end
     end
-    # if data.errors.any?
-    #   return false
-    # else
-    #   type = img_type[@raw_data['EmoteType'].to_s]
-    #   convert_base64_to_image img_str, type, data.id
-
-    #   if data.image.attach(io: File.open(Rails.root.join("app", "raw#{ data.id.to_s }.#{ type }")), filename: "raw#{ data.id.to_s }.#{ type }")
-    #     File.open("app/raw#{ data.id.to_s }.#{ type }", 'r') do |f|
-    #       File.delete(f)
-    #     end
-
-    #     return data.id
-    #   else
-    #     return false
-    #   end
-    # end
   end
 
   def convert_base64_to_image img_str, type, id
     data = Base64.decode64(img_str)
-    data = Zlib::Inflate.inflate(data)
-
-    File.open("app/raw#{ id.to_s }.#{ type }", 'wb') { |f| f.write(data) }
+    uncompresse_data = Zlib::Inflate.inflate(data)
+    Base64.encode64 uncompresse_data
   end
 
 end
