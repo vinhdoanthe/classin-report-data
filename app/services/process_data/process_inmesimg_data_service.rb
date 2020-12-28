@@ -34,15 +34,16 @@ class ProcessData::ProcessInmesimgDataService < ApplicationService
     if data.errors.any?
       return false
     else
-      type = img_type[@raw_data['EmoteType'].to_s]
-      base64_str = convert_base64_to_image img_str, type, data.id
-      base64_str.insert(0, "data:image/#{ type };base64,")
+      return false
+      # type = img_type[@raw_data['EmoteType'].to_s]
+      # base64_str = convert_base64_to_image img_str, type, data.id
+      # base64_str.insert(0, "data:image/#{ type };base64,")
 
-      if data.image.attach(data: base64_str)
-        return data.id
-      else
-        return false
-      end
+      # if data.image.attach(data: base64_str)
+      #   return data.id
+      # else
+      #   return false
+      # end
     end
   end
 
