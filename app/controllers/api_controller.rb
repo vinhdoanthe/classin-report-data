@@ -4,9 +4,10 @@ class ApiController < ActionController::API
   before_action :authorize_api
 
   def lesson_report
-    report = ToppyLessonReport.where(class_id: params[:classID], uid: params[:studentID]).first
+    # report = ToppyLessonReport.where(class_id: params[:classID], uid: params[:studentID]).first
 
-    result = report.present? ? report.data : {}
+    # result = report.present? ? report.data : {}
+    result = LessonReport.call(params[:classID], params[:studentID])
     render json: result
   end
 
