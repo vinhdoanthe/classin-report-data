@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore VSCode auto-generated files
+.idea/
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
